@@ -113,7 +113,7 @@ module sideSupportRailBase(top=true, recess=false, supportedZ, supportedY, suppo
         ventDz = railBottomThickness+distanceFromSeparator+r;
         ventZ = railSideHeight-(ventDz+distanceFromSeparator+r+railBaseThickness);
 
-        if (ventY1 > 2*r) {
+        /*if (ventY1 > 2*r) {
           translate(v = [0, ventDy1+r, ventDz])
             minkowski() {
               cube(size = [inf, ventY1-2*r, ventZ]);
@@ -127,7 +127,7 @@ module sideSupportRailBase(top=true, recess=false, supportedZ, supportedY, suppo
               cube(size = [inf, ventY2-2*r, ventZ]);
               sphere(r = r);
             }
-        }
+        }*/
 
         frontCutTrans = recess ? translate(v=[0,frontMountPad,0]): translate(v=[0,xySlack,0]);
         multmatrix(frontCutTrans) {
