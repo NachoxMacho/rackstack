@@ -21,9 +21,9 @@ visualize = false,
 zOrientation = "middle", // ["middle" | "bottom"]
 recessSideRail = false,
 
-boxWidth = 170,
-boxHeight = 27,
-boxDepth = 100,
+boxWidth = 180,
+boxHeight = 36.5,
+boxDepth = 183,
 
 railDefaultThickness = 1.5,
 railSideThickness = 3,
@@ -31,6 +31,10 @@ railSideThickness = 3,
 frontPlateThickness = 3,
 frontPlateCutoutYSpace = 3,
 frontPlateCutoutXSpace = 5,
+
+leftRail= true,
+rightRail = true,
+frontHolder = true,
 
 // end config //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,17 +55,23 @@ frontPlateCutoutXSpace = 5,
     %cube(size = [boxWidth, boxDepth, boxHeight]);
   }
 
-  multmatrix(leftRailTrans)
-    sideSupportRailBase(top = true, recess = recessSideRail, defaultThickness = railDefaultThickness, supportedZ =
+  if (leftRail) {
+      multmatrix(leftRailTrans)
+    sideSupportRailBase(top = false, recess = recessSideRail, defaultThickness = railDefaultThickness, supportedZ =
     boxHeight, supportedY = boxDepth, supportedX = boxWidth, zOrientation = zOrientation, railSideThickness =
     railSideThickness);
+  }
 
-  multmatrix(rightRailTrans)
-    sideSupportRailBase(top = true, recess = recessSideRail, defaultThickness = railDefaultThickness, supportedZ =
+
+  if (rightRail) {
+      multmatrix(rightRailTrans)
+    sideSupportRailBase(top = false, recess = recessSideRail, defaultThickness = railDefaultThickness, supportedZ =
     boxHeight, supportedY = boxDepth, supportedX = boxWidth, zOrientation = zOrientation, railSideThickness =
     railSideThickness);
+  }
 
-  multmatrix(frontBoxHolderTrans)
+  if (frontHolder) {
+      multmatrix(frontBoxHolderTrans)
     frontBoxHolder(
     cutoutOffsetX = (rackMountScrewWidth-(boxWidth-2*frontPlateCutoutXSpace))/2, cutoutOffsetY = railBottomThickness+
       frontPlateCutoutYSpace,
@@ -69,6 +79,7 @@ frontPlateCutoutXSpace = 5,
     zOrientation = zOrientation, supportedZ = boxHeight, supportWidth = max(10, boxWidth-(sideRailBaseWidth+10)),
     supportRailDefaultThickness = railDefaultThickness, plateThickness = frontPlateThickness
     );
+  }
 }
 
 enclosedBoxSystem();
