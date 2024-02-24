@@ -19,7 +19,7 @@ module enclosedBoxSystem (
 // Does not affect any part dimensions. Set this to true to visualize how a box would be mounted.
 visualize = false,
 zOrientation = "middle", // ["middle" | "bottom"]
-recessSideRail = false,
+recessSideRail = true,
 
 boxWidth = 180,
 boxHeight = 36.5,
