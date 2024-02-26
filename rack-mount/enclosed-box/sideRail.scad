@@ -4,7 +4,7 @@ include <./helper.scad>
 //sideSupportRailBase(top=true, defaultThickness=1.5, supportedZ=27.2, supportedY=101.5, supportedX=159);
 
 
-module sideSupportRailBase(top=true, recess=false, supportedZ, supportedY, supportedX, zOrientation="middle", defaultThickness=2, railSideThickness=4) {
+module sideSupportRailBase(top=false, recess=false, supportedZ, supportedY, supportedX, zOrientation="middle", defaultThickness=2, railSideThickness=4, backSlotOpeningThicknessOffset=8, backSlotOpeningHeightOffset=8) {
 
   mountBlockDepth = 10;
   screwMountGlobalDz = screwDiff / 2.0; // vertical distance between local origin and main rail screw mount
@@ -76,7 +76,6 @@ module sideSupportRailBase(top=true, recess=false, supportedZ, supportedY, suppo
     }
   }
 
-
   module sideSupportRailBase() {
 
     difference () {
@@ -98,6 +97,11 @@ module sideSupportRailBase(top=true, recess=false, supportedZ, supportedY, suppo
           translate(v = [0, 0, railSideHeight-railBaseThickness])
           cube(size = [sideRailBaseWidth, railLength, railBaseThickness]);
         }
+      }
+
+      union() {
+        translate(v = [railSideThickness+backSlotOpeningThicknessOffset, supportedY, backSlotOpeningHeightOffset])
+        cube(size = [sideRailBaseWidth, railBackThickness, railSideHeight]);
       }
 
       union() {

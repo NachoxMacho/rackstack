@@ -35,6 +35,8 @@ frontPlateCutoutXSpace = 5,
 leftRail= true,
 rightRail = true,
 frontHolder = true,
+backBracketCutoutHeight = 8,
+backBracketCutoutWidth = 8,
 
 // end config //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -59,7 +61,7 @@ frontHolder = true,
       multmatrix(leftRailTrans)
     sideSupportRailBase(top = false, recess = recessSideRail, defaultThickness = railDefaultThickness, supportedZ =
     boxHeight, supportedY = boxDepth, supportedX = boxWidth, zOrientation = zOrientation, railSideThickness =
-    railSideThickness);
+    railSideThickness, backSlotOpeningHeightOffset = backBracketCutoutHeight, backSlotOpeningThicknessOffset = backBracketCutoutWidth);
   }
 
 
