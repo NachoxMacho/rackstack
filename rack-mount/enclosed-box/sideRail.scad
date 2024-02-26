@@ -117,22 +117,6 @@ module sideSupportRailBase(top=false, recess=false, supportedZ, supportedY, supp
         ventDz = railBottomThickness+distanceFromSeparator+r;
         ventZ = railSideHeight-(ventDz+distanceFromSeparator+r+railBaseThickness);
 
-        /*if (ventY1 > 2*r) {
-          translate(v = [0, ventDy1+r, ventDz])
-            minkowski() {
-              cube(size = [inf, ventY1-2*r, ventZ]);
-              sphere(r = r);
-            }
-        }
-
-        if (ventY2 > 2*r) {
-          translate(v = [0, ventDy2+r, ventDz])
-            minkowski() {
-              cube(size = [inf, ventY2-2*r, ventZ]);
-              sphere(r = r);
-            }
-        }*/
-
         frontCutTrans = recess ? translate(v=[0,frontMountPad,0]): translate(v=[0,xySlack,0]);
         multmatrix(frontCutTrans) {
           cylindricalFiletNegative(p0=[sideRailBaseWidth,0,0],p1=[sideRailBaseWidth,0,inf], n=[1,-1,0],r=r);
